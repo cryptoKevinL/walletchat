@@ -91,6 +91,5 @@
          "last 1 safari version"
       ]
    },
-
-   "proxy": "http://api.v1.walletchat.fun"
+   "proxy": "http://localhost:8080/"
 }
