@@ -24,7 +24,7 @@ const EnterName = ({ account }: { account: string }) => {
       formState: { errors },
    } = useForm()
 
-   const { setName: globalSetName } = useWallet()
+   const { setName: globalSetName, redirectUrl } = useWallet()
    let navigate = useNavigate()
 
    const [name, setName] = useState('')
@@ -69,7 +69,7 @@ const EnterName = ({ account }: { account: string }) => {
       if (values?.name) {
 
          setIsFetching(true)
-         console.log("process.env.REACT_APP_REST_API: ", process.env.REACT_APP_REST_API)
+         // console.log("process.env.REACT_APP_REST_API: ", process.env.REACT_APP_REST_API)
          post(`/name`, {
             name: values.name,
             address: account,
@@ -77,7 +77,7 @@ const EnterName = ({ account }: { account: string }) => {
             .then((response) => {
                console.log('✅[POST][Name]:', response)
                globalSetName(name)
-               navigate('/community/walletchat')
+               navigate(redirectUrl)
             })
             .catch((error) => {
                console.error('🚨[POST][Name]:', error)
